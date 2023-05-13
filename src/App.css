@@ -1,0 +1,63 @@
+section {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 0 auto;
+}
+
+#mainPageTab {
+  background-color: black;
+  color: white;
+  text-align: left;
+  border-top: 3px solid black;
+  border-radius: 0.375rem;
+  padding: 0.75rem 1.25rem;
+}
+#careerpaths img {
+  max-width: 500px;
+  max-height: 330px;
+  width: fit-content;
+}
+#mainPageTab:focus, #mainPageTab::after {
+  background-color: #FFF4A3;
+  color: black;
+}
+
+#value-badge {
+  background-color: #a4f3b1;
+  color: black;
+  font-style: italic;
+  letter-spacing: 0.025rem;
+  border-radius: 9999px;
+  padding: 0.25rem 1.25rem;
+}
+
+#guarantee-badge {
+  background-color: #B2EAEA;
+  color: black;
+  font-style: italic;
+  letter-spacing: 0.025rem;
+  border-radius: 9999px;
+  padding: 0.25rem 1.25rem;
+}
+
+#atc-btn {
+  background-color: #04AA6D;
+  color: white;
+  border-radius: 2px;
+  padding: 1rem 2rem;
+  box-shadow: 0 8px 16px 2px #04b79f69;
+}
+
+#atc-btn:hover {
+  background-color: #066442;
+}
+
+#atc-btn2 {
+  background-color: #04aa6d;
+  color: white;
+  border-radius: 2px;
+}
+
+#atc-btn2:hover {
+  background-color: #03b876;
+}
