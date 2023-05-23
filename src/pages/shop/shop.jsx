@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { PRODUCTS } from "../../products";
 import ProductModal from "../../components/product-modal";
+import SingleProduct from "../../components/single-product";
 import { ShopContext } from "../../context/shop-context";
 import { Link, useNavigate } from "react-router-dom";
 import "./shop.css"
@@ -48,7 +49,13 @@ const Shop = () => {
 				<CareerPath />
 			</section>
 			<section>
-				<CertificationCatalog />
+				<ul>
+					{PRODUCTS.map((product) => {
+						<li key={product.id}>
+							<SingleProduct />
+						</li>
+					})}
+				</ul>
 			</section>
 		</>
 		

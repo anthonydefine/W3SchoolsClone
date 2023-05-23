@@ -14,19 +14,6 @@ const CertificationCatalog = () => {
 	const [over, setOver] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const defaultSort = () => {
-    PRODUCTS;
-  }
-
-  const [sort, setSort] = useState(defaultSort());
-
-  const low = () => {
-    setSort((prev) => ({}))
-  }
-
-  const lowToHigh = [...PRODUCTS].sort((a, b) => a.price > b.price ? 1 : -1);
-  const highToLow = [...PRODUCTS].sort((a, b) => a.price < b.price ? 1 : -1);
-
 	const navigation = useNavigate();
 
   return (
