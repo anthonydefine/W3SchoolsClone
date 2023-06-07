@@ -9,7 +9,7 @@ import ImageGallary from '../../components/image-gallary';
 import { Badge } from 'flowbite-react';
 import { Select } from "flowbite-react";
 import { Label } from "flowbite-react";
-import { GiCheckMark } from "react-icons/gi";
+import { FaCheck } from "react-icons/fa";
 import { RiArrowRightSLine } from "react-icons/ri";
 
 const ProductPage = () => {
@@ -24,9 +24,9 @@ const ProductPage = () => {
 
   return (
     <section className='product-wrapper'>
-      <div className='flex font-light'>
-        <a className='flex items-center' href='#'>Home <RiArrowRightSLine /> </a>
-        <a className='flex items-center' href='#' onClick={() => navigate("/")}>Certification Course Catalog <RiArrowRightSLine /> </a>
+      <div className='flex justify-start font-light text-sm my-4'>
+        <a className='flex items-center' href='#'>Home <RiArrowRightSLine className='mx-2' /> </a>
+        <a className='flex items-center' href='#' onClick={() => navigate("/")}>Certification Course Catalog <RiArrowRightSLine className='mx-2' /> </a>
         <a href='#'>{courseTitle}</a>
       </div>
       <div className='course-details grid md:grid-cols-2 gap-4'>
@@ -34,15 +34,15 @@ const ProductPage = () => {
             <ImageGallary {...product} />
           </div>
           <div>
-            <h1 className='text-3xl text-left tracking-wider'>{courseTitle}</h1>
+            <h1 className='text-2xl md:text-3xl text-left tracking-wider'>{courseTitle}</h1>
             <div>
               {onSale ? 
-              <div className='flex items-center'>
+              <div className='flex items-center justify-center my-4'>
                 <p className='line-through text-lg me-2'>${preSalePrice}</p>
                 <p className='font-light mr-6'>${price}</p>
                 <Badge id='value-badge'>VALUE DEAL! Save ${preSalePrice - price}</Badge>
               </div> :
-              <div className='flex'>
+              <div className='flex items-center pl-8 my-4'>
                 <p className='font-light mr-6'>${price}</p>
                 <Badge id='guarantee-badge'>14-DAY MONEY BACK GUARANTEE</Badge>
               </div>
@@ -51,18 +51,27 @@ const ProductPage = () => {
             <div>
               {courseInfo ? (
                 <div>
-                  <p className='text-sm'>{courseInfo.heading}</p>
-                  <ul>
-                    <li><span><GiCheckMark/></span>{courseInfo.bulletOne}</li>
-                    <li><span><GiCheckMark/></span>{courseInfo.bulletTwo}</li>
-                    <li><span><GiCheckMark/></span>{courseInfo.bulletThree}</li>
+                  <p className='text-md my-4'>{courseInfo.heading}</p>
+                  <ul className='ml-4'>
+                    <li className='flex items-center'>
+                      <FaCheck className='mr-4' />
+                      <span className='tracking-wider font-thin'>{courseInfo.bulletOne}</span>
+                    </li>
+                    <li className='flex items-center'>
+                      <FaCheck className='mr-4' />
+                      <span className='tracking-wider font-thin'>{courseInfo.bulletTwo}</span>
+                    </li>
+                    <li className='flex items-center'>
+                      <FaCheck className='mr-4' />
+                      <span className='tracking-wider font-thin'>{courseInfo.bulletThree}</span>
+                    </li>
                   </ul>
                 </div>
               ) : (
                 ""
               )}
             </div>
-            <div className='grid grid-cols-8 gap-2 my-3'>
+            <div className='grid grid-cols-8 gap-2 my-6'>
               <div className="col-span-2" id="select">
                 <Label htmlFor="quantity" value="Quantity"/>
                 <Select className="rounded-none" id="quantity" value={cartItems[id]} onChange={(e) => updateCartItemCount(Number(e.target.value), id)}>
@@ -80,7 +89,7 @@ const ProductPage = () => {
               </div>
               <button className='border border-black col-span-6 rounded-sm py-3 hover:shadow-md' onClick={() => navigate('/cart')}>Add to cart</button>
             </div>
-            <button className='bg-green-600 p-3 rounded-sm text-white w-full'>Buy it now</button>
+            <button id='atc-btn2' className='w-full py-3 rounded-md'>Buy it now</button>
             <div className='testimonial italic my-4'>
               <p>
                 The W3 Schools Course simplified the learning process. It's well organized and gradually challenges you to keep progressing your 

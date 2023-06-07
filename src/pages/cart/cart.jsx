@@ -4,6 +4,7 @@ import { ShopContext } from "../../context/shop-context";
 import { CartItem } from "./cart-item";
 import { IoCartOutline } from "react-icons/io5";
 import { RiArrowRightSLine } from "react-icons/ri"
+import Paypal from "../../assets/icons/icons8-paypal-48.png";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -16,8 +17,8 @@ export const Cart = () => {
 
 	return (
 		<section>
-			<div className="flex justify-between my-10">
-				<h1 className="text-4xl">Your cart</h1> 
+			<div className="flex items-center justify-between my-10">
+				<h1 className="text-3xl tracking-wider">Your cart</h1> 
 				<div>
 					{totalAmount > 0 ? (
 						<div className="flex">
@@ -25,8 +26,9 @@ export const Cart = () => {
 								<p className="text-gray-400 text-right">Subtotal</p>
 								<h1 className="text-2xl">${totalAmount}.00</h1>
 							</div>
-							<button className="flex justify-evenly items-center bg-green-600 my-2 px-4 rounded-md text-white">
-								<IoCartOutline className="me-2" size={24}/> Check out
+							<button id="atc-btn2" className="flex justify-evenly items-center my-2 px-4 rounded-md text-white">
+								<IoCartOutline className="me-2" size={24}/> 
+								Check out
 							</button>
 						</div>
 					) : (
@@ -53,17 +55,20 @@ export const Cart = () => {
 							<h1 className="text-2xl">${totalAmount}.00</h1>
 						</div>
 					</div>
-					<button className="flex justify-center items-center min-w-full bg-green-600 my-5 py-4 rounded-md text-white">
+					<button id="atc-btn2" className="flex justify-center items-center min-w-full my-5 py-4 rounded-md text-white">
 						<IoCartOutline className="me-2" size={24}/> Check out
 					</button>
-					<button className="bg-yellow-200 px-4 py-2">Paypal</button>
+					<button style={{backgroundColor: '#ffc439'}} className="min-w-full md:max-w-xs flex items-center justify-center text-blue-800 font-bold text-2xl py-1 rounded-md">
+						<img src={Paypal} />
+						Paypal
+					</button>
 					<Link className="flex justify-center mt-8 items-center" to={"/"}>Continue shopping <RiArrowRightSLine size={18}/></Link>
 				</>
 						
 					) : (
-						<div className="flex flex-col pt-28 items-center border-t-2 border-r-2 border-l-2 min-h-screen">
-							<p className="text-sm">Your cart is empty</p>
-							<button className="flex justify-evenly items-center bg-green-600 my-2 py-3 px-4 rounded-md text-white"
+						<div className="flex flex-col py-40 items-center border-t-2 border-r-2 border-l-2">
+							<p className="text-sm my-4">Your cart is empty</p>
+							<button id="atc-btn2" className="flex justify-evenly items-center my-2 py-3 px-4 rounded-md text-white"
 								onClick={() => navigate("/")}>
 								<IoCartOutline className="me-2" size={24}/> Continue shopping
 							</button>

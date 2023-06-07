@@ -77,7 +77,7 @@ const AccordionTrigger = React.forwardRef(({ children, className, ...props }, fo
   <Accordion.Header className="flex">
     <Accordion.Trigger
       className={classNames(
-        'text-black hover:bg-green-200 focus:bg-green-200 font-bold group flex h-[45px] flex-1 cursor-pointer items-center justify-between bg-gray-100 px-5 my-1 outline-none',
+        'text-black hover:bg-green-200 focus:bg-green-200 font-bold group flex flex-1 cursor-pointer items-center text-start bg-gray-100 px-5 py-3 my-1 outline-none',
         className
       )}
       {...props}

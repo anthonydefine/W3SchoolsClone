@@ -6,7 +6,7 @@ function CourseOverview(props) {
   return (
     <div className="grid md:grid-cols-2 items-center place-items-center my-12">
       {props.overviewImg ? 
-      <div>
+      <div className="p-8">
         <img width="md:300px" src={props.overviewImg} />
       </div> : ""}
       <div className="md:w-3/5">

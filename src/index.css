@@ -7,3 +7,13 @@
 #root {
   font-family: 'Source Sans Pro', sans-serif!important;
 }
+
+section {
+  padding: 2rem 0.5rem;
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  section {
+    padding: 2.5rem 2rem;
+  }
+}

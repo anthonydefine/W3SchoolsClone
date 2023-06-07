@@ -1,62 +1,63 @@
-import React, { useContext, useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { PRODUCTS } from "../../products";
-import ProductModal from "../../components/product-modal";
 import SingleProduct from "../../components/single-product";
-import { ShopContext } from "../../context/shop-context";
-import { Link, useNavigate } from "react-router-dom";
+import Catalog from "../catalog/catalog";
 import "./shop.css"
 import CareerPath from "../../components/career-path";
-import CertificationCatalog from "../../components/complete-catalog";
 
 const Shop = () => {
-	const { addToCart } = useContext(ShopContext);
-	const [over, setOver] = useState(null);
 
 	const navigation = useNavigate();
 
 	return (
 		<>
-			<section className="grid gap-3 grid-cols-5 grid-rows-2 my-10">
-				{PRODUCTS.map((product) => {
-					const {id, imgHover, courseImage, price, preSalePrice, onSale, courseTitle} = product;
-					return (
-						<div key={id} className="border-gray-300 border shadow-md p-3"
-							onMouseEnter={() => setOver(id)} onMouseLeave={() => setOver(null)}>
-							<Link to={`/${id}`}>
-								<img 
-									className="thumbnail mx-auto" 
-									src={over ? imgHover : courseImage}
-								/>
-							</Link>
-							<div className="text-left items-center">
-								{onSale ? <p className="line-through text-gray-400 text-sm py-1">${preSalePrice}</p> : <br></br>}
-								<h2 className="text-2xl">${price}</h2>
-								<h5 className="text-xl">{courseTitle}</h5>
-								{over ? 
-									<div className="flex justify-between flex-wrap pt-5">
-										<ProductModal {...product} />
-										<button id="atc-btn2" className="px-1 py-2" onClick={() => {addToCart(id); navigation('/cart');}}>
-											Add to cart
-										</button>
-									</div>
-									: ""}
-							</div>
-						</div>
-					);
-			})}
+			<section className="flex flex-col">
+				<h1 className="text-center text-2xl font-thin">Bestsellers</h1>
+				<ul className="flex flex-nowrap overflow-x-scroll scroll scroll-smooth xl:grid xl:grid-cols-5 xl:grid-rows-2 my-8 no-scrollbar">
+					{PRODUCTS.slice(0, 10).map((product) => {
+							return (
+								<li className="flex-none w-2/5 md:w-1/5 xl:w-auto mr-3" key={product.id}>
+									<SingleProduct {...product} />
+								</li>
+							);
+					})}
+				</ul>
+				<button id="atc-btn2" className="self-center py-3 px-5" onClick={() => {navigation('/course-collections')}}>See all Courses</button>
+			</section>
+			<section className="flex flex-col">
+				<h1 className="text-center text-2xl font-thin">Best Value</h1>
+				<ul className="flex flex-nowrap overflow-x-scroll xl:grid xl:grid-cols-5 xl:grid-rows-2 my-8 no-scrollbar">
+					{PRODUCTS.filter((product) => product.bestValue).map((product) => {
+							return (
+								<li className="flex-none w-2/5 md:w-1/5 xl:w-auto mr-3" key={product.id}>
+									<SingleProduct {...product} />
+								</li>
+							);
+					})}
+				</ul>
+			</section>
+			<section className="flex flex-col">
+				<h1 className="text-center text-2xl font-thin">Most in-demand Single-Courses</h1>
+				<ul className="flex flex-nowrap overflow-x-scroll xl:grid xl:grid-cols-5 xl:grid-rows-2 my-8 no-scrollbar">
+					{PRODUCTS.filter((product) => product.single).map((product) => {
+							return (
+								<li className="flex-none w-2/5 md:w-1/5 xl:w-auto mr-3" key={product.id}>
+									<SingleProduct {...product} />
+								</li>
+							);
+					})}
+				</ul>
+				<button className="text-black py-3 px-5 hover:shadow-md hover:text-green-500 rounded-sm border border-black self-center" onClick={() => {navigation('/course-collections')}}>
+          See all courses
+        </button>
 			</section>
 			<section>
 				<CareerPath />
 			</section>
-			<section>
-				<ul>
-					{PRODUCTS.map((product) => {
-						<li key={product.id}>
-							<SingleProduct />
-						</li>
-					})}
-				</ul>
-			</section>
+			<div>
+				<Catalog />
+			</div>
 		</>
 		
 	);

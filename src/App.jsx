@@ -3,11 +3,13 @@ import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/navigation';
 import Shop from './pages/shop/shop';
 import { Cart } from "./pages/cart/cart";
+import Catalog from './pages/catalog/catalog';
 import Footer from './components/footer';
 import { ShopContextProvider } from './context/shop-context';
 import ProductPage from './pages/product/product-page';
 import './App.css'
 import './index.css'
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
             <Route path=':productId' element={<ProductPage />} />
           </Route>
           <Route exact path='/cart' element={<Cart />} />
+          <Route path='/course-collections'  element={<Catalog />} />
         </Routes>
       <Footer />
     </ShopContextProvider>
