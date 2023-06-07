@@ -15,7 +15,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 const ProductPage = () => {
   const { productId } = useParams();
   const product = PRODUCTS.find((product) => product.id === productId);
-  const {id, onSale, preSalePrice, price, courseTitle, courseImage, imgHover, courseInfo } = product;
+  const {id, onSale, preSalePrice, price, courseTitle, courseInfo } = product;
 
 	const { cartItems, updateCartItemCount } = useContext(ShopContext);
 
